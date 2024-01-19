@@ -3,5 +3,5 @@
 
 Repository for Software Testing course project (CPTS 582)
 
-Our team is developing a full-stack web application for electronics marketplace in the main purpose of performing software testing on the application. 
+Our team is developing a full-stack web application for electronics marketplace, primarily intended for the testing of software functionalities and performance.
 

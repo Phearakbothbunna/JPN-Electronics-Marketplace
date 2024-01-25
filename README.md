@@ -1,5 +1,5 @@
 # JPN-Electronics-Marketplace
-# Team members: Phearak Both Bunna, Jake Eckfeldt, Nephi Duff
+# Team members: Phearak Both Bunna, Jake Eckfeldt, Nephi Duff, Jiawei Guo
 
 Repository for Software Testing course project (CPTS 582)
 

@@ -44,7 +44,7 @@ function Login() {
                     </Button>
                 </Form.Group>
             </Form>
-
+            <hr style={{ backgroundColor: "white"}} />
             <Button className="btn_login" variant="primary" type="submit">
                 Login
             </Button>

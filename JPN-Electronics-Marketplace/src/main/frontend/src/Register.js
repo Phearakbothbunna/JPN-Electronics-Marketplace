@@ -10,6 +10,10 @@ function Register() {
     const togglePwd = () => {
         setShowPwd(!showPwd);
     }
+
+     const pwdClicked = async(e) => {
+        alert("Passwords requirements: \n-At least 8 characters long \n-At least one capital letter \n-At least one number 0-9 \n-At least one symbol");
+    }
     return (
 
         <Container className="mt-5">
@@ -29,7 +33,8 @@ function Register() {
                     <Form.Control
                         type={showPwd ? "text":"password"}
                         name="password"
-                        placeholder="Enter Password" />
+                        placeholder="Enter Password"
+                    onClick={pwdClicked}/>
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formBasicPassword">
@@ -42,7 +47,7 @@ function Register() {
                 <Button variant="outline-secondary" onClick={togglePwd}>
                         {showPwd ? "Hide" : "Show Password"}
                 </Button>
-
+                <hr style={{ backgroundColor: "white"}} />
                 <Link to="/login">
                     <div>
                         <Button className="btn_register" variant="outline-primary" type="submit">

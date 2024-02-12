@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {Navigate} from 'react-router-dom';
 import app_logo from './app_logo.png';
+import './LogoPage.css'
 
 /*
     redirectLogin: hold current state value

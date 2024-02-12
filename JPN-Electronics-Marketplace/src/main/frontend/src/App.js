@@ -11,11 +11,10 @@ function App() {
       <div className="App">
         <header className="App-header">
           <Routes>
-            {/* Render Login within a Route */}
-            <Route path="/" element={<LogoPage />} />
+              {/* Routing of the website */}
+              <Route path="/" element={<LogoPage />} />
               <Route path = "/login" element = {<Login/>} />
-            <Route path="/register" element={<Register />} />
-
+              <Route path="/register" element={<Register />} />
           </Routes>
         </header>
 

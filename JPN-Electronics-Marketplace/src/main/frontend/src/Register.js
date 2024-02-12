@@ -88,7 +88,7 @@ function Register() {
                         placeholder="Must match with Password above"
                         onChange={(e) => setConfirmPwd(e.target.value)}/>
                 </Form.Group>
-                <Button variant="outline-secondary" onClick={togglePwd}>
+                <Button variant="outline-secondary" onClick={togglePwd} className="btn_showPwd">
                         {showPwd ? "Hide" : "Show Password"}
                 </Button>
                 <hr style={{ backgroundColor: "white"}} />

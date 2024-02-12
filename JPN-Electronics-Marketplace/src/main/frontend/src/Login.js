@@ -39,7 +39,7 @@ function Login() {
                         type={showPwd ? "text":"password"}
                         name="password"
                         placeholder="Enter Password" />
-                    <Button variant="outline-secondary" onClick={togglePwd}>
+                    <Button variant="outline-secondary" onClick={togglePwd} className="btn_showPwd">
                         {showPwd ? "Hide" : "Show Password"}
                     </Button>
                 </Form.Group>
@@ -50,7 +50,7 @@ function Login() {
             </Button>
 
             <div className="d-flex justify-content-center mt-3">
-                <Link to="/register" className="btn btn-secondary">Register</Link>
+                <Link to="/register" className="btn btn-secondary btn_register">Register</Link>
             </div>
 
         </Container>

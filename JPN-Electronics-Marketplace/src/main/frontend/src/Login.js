@@ -1,9 +1,10 @@
 import React, {useState} from "react";
 import {Link} from "react-router-dom";
 import { Container, Form, Button } from "react-bootstrap";
-import 'bootstrap/dist/css/bootstrap.min.css'
-import './Login.css'
-import app_logo from './app_logo.png'
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './Login.css';
+import app_logo from './app_logo.png';
+import CustomNavbar from "./Navbar";
 
 
 function Login() {
@@ -18,6 +19,9 @@ function Login() {
     }
 
     return (
+        <>
+        
+        <CustomNavbar />
 
         <Container className="mt-5">
             {/*App logo*/}
@@ -54,6 +58,7 @@ function Login() {
             </div>
 
         </Container>
+        </>
 
     );
 }

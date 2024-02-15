@@ -67,17 +67,17 @@ function CustomNavbar() {
                             <Form onSubmit={handleUpload}>
                                 <Form.Group className="mb-3">
                                     <Form.Label> <strong> Product Name </strong></Form.Label>
-                                    <Form.Control type="text" placeholder="Enter product name" value={productName} onChange={e => setProductName(e.target.value)}/>
+                                    <Form.Control type="text" placeholder="Enter product name" value={productName} onChange={e => setProductName(e.target.value)} required/>
                                 </Form.Group>
 
                                 <Form.Group className={"mb-3"}>
                                     <Form.Label> <strong> Price </strong></Form.Label>
-                                    <Form.Control type="text" placeholder="Enter product price in $" value={productPrice} onChange={e => setProductPrice(e.target.value)} />
+                                    <Form.Control type="text" placeholder="Enter product price in $" value={productPrice} onChange={e => setProductPrice(e.target.value)} required />
                                 </Form.Group>
 
                                 <Form.Group className="mb-3">
                                     <Form.Label> <strong> Product Description </strong> </Form.Label>
-                                    <Form.Control as="textarea" rows={4} placeholder="Enter product description" value={productDescription} onChange={e => setProductDescription(e.target.value)} />
+                                    <Form.Control as="textarea" rows={4} placeholder="Enter product description" value={productDescription} onChange={e => setProductDescription(e.target.value)} required />
                                 </Form.Group>
 
                                  <Form.Group className="mb-3">

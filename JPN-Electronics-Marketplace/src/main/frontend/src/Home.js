@@ -11,8 +11,7 @@ function Home() {
     return(
         <>
         <CustomNavbar />
-        <br></br>
-        <br></br>
+
         <Container fluid id='listing-container'>
             <Row>
                 <Col>

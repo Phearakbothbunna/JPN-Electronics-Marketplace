@@ -20,9 +20,9 @@ function Login() {
 
     return (
         <>
-        
-        <CustomNavbar />
 
+        <CustomNavbar />
+        <br/>
         <Container className="mt-5">
             {/*App logo*/}
 

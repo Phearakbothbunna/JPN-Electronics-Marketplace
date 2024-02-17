@@ -32,7 +32,7 @@ function Login() {
 
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label style={{color: "white"}}>Email address</Form.Label>
-                    <Form.Control type="text" name="email" placeholder="Enter Email" />
+                    <Form.Control type="text" name="email" placeholder="Enter Email" required/>
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formBasicPassword">
@@ -42,7 +42,7 @@ function Login() {
                     <Form.Control
                         type={showPwd ? "text":"password"}
                         name="password"
-                        placeholder="Enter Password" />
+                        placeholder="Enter Password" required/>
                     <Button variant="outline-secondary" onClick={togglePwd} className="btn_showPwd">
                         {showPwd ? "Hide" : "Show Password"}
                     </Button>

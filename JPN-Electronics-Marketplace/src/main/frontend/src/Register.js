@@ -9,7 +9,24 @@ function Register() {
     const [email, setEmail] = useState("");
     const [pwd, setPwd] = useState("");
     const [confirmPwd, setConfirmPwd] = useState("");
-    const[showPwd, setShowPwd] = useState(false);
+    const [showPwd, setShowPwd] = useState(false);
+
+    const [emailValid, setEmailValid] = useState(false);
+    const [pwdValid, setPwdValid] = useState(false);
+
+
+
+
+    const validateEmail = (email) => {
+        const isValid = /@/.test(email);
+        setEmailValid(isValid);
+    };
+
+    const validatePwd = (password) => {
+        const isValid = password.length >= 8 && /[A-Z]/.test(password) && /\d/.test(pwd) && /[@!#$%^&*]/.test(password);
+        setPwdValid(isValid)
+    }
+
     const togglePwd = () => {
         setShowPwd(!showPwd);
     }
@@ -18,38 +35,12 @@ function Register() {
     const handleRegister = async (e) => {
         // For testing purposes
         console.log(email, pwd);
-        e.preventDefault()
+        e.preventDefault();
 
-        // Validate the password & confirm password fields to ensure they match
-        if (pwd !== confirmPwd) {
-            alert("Password and confirm password do not match");
-        }
+        if (emailValid && pwdValid && pwd === confirmPwd) {
+            window.location.href = "/login";
+        }  ;
 
-        // Validate the email field to ensure it contains "@" symbol
-        else if (/[@]/.test(email) === false) {
-            alert("Email must contain @ symbol");
-        }
-
-        else {
-            // Validate that the password is at least 8 characters long
-            if (pwd.length < 8) {
-                alert("Password needs to be at least 8 characters long");
-            }
-            // Validate that the password contains at least 1 upper case character
-            else if (/[A-Z]/.test(pwd) === false) {
-                alert("Password must contain at least 1 capital letter");
-            }
-            // Validate that the password contains at least 1 number
-            else if (/\d/.test(pwd) === false) {
-                alert("Password must contain at least 1 number");
-            }
-            // Validate that the password contains at least 1 symbol or special character
-            else if (/[@!#$%^&*]/.test(pwd) === false) {
-                alert("Password must contain at least 1 symbol");
-            } else {
-                window.location.href = "/login";
-            }
-        }
     }
 
     return (
@@ -67,31 +58,46 @@ function Register() {
                         type="text"
                         name="email"
                         placeholder="Must contain @ symbol"
-                        onChange={(e) => setEmail(e.target.value)}/>
+                        onChange={(e) => {
+                            setEmail(e.target.value);
+                            validateEmail(e.target.value);
+                        }}
+                        className={emailValid ? '' : 'is-invalid'}
+
+                    />
+
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formBasicPassword">
-                    <Form.Label  style={{color: "antiquewhite"}}>Password</Form.Label>
+                    <Form.Label style={{color: "antiquewhite"}}>Password</Form.Label>
                     <Form.Control
-                        type={showPwd ? "text":"password"}
+                        type={showPwd ? "text" : "password"}
                         name="password"
                         placeholder="AT LEAST: 8 characters long, 1 capital letter, 1 number and 1 symbol"
                         // This will capture the user's input when they type in the form
-                        onChange={(e) => setPwd(e.target.value)}/>
+                        onChange={(e) => {
+                            setPwd(e.target.value);
+                            validatePwd(e.target.value);
+                        }}
+                        className={pwdValid ? '' : 'is-invalid'}
+                        />
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formBasicPassword">
-                    <Form.Label  style={{color: "antiquewhite"}}>Confirm Password</Form.Label>
+                    <Form.Label style={{color: "antiquewhite"}}>Confirm Password</Form.Label>
                     <Form.Control
-                        type={showPwd ? "text":"password"}
+                        type={showPwd ? "text" : "password"}
                         name="confirm_password"
                         placeholder="Must match with Password above"
-                        onChange={(e) => setConfirmPwd(e.target.value)}/>
+                        onChange={(e) => {setConfirmPwd(e.target.value)}}
+                        className= {confirmPwd === pwd ? '' : "is-invalid"}
+
+                    />
                 </Form.Group>
                 <Button variant="outline-secondary" onClick={togglePwd} className="btn_showPwd">
-                        {showPwd ? "Hide" : "Show Password"}
+                    {showPwd ? "Hide" : "Show Password"}
                 </Button>
-                <hr style={{ backgroundColor: "white"}} />
+                <hr style={{backgroundColor: "white"}}/>
                 <Link to="/login">
                     <div>
                         <Button className="btn_submit" variant="outline-primary" type="submit" onClick={handleRegister}>
@@ -106,7 +112,7 @@ function Register() {
         </Container>
 
 
-);
+    );
 }
 
 export default Register;

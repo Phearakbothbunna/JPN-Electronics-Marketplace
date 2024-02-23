@@ -1,5 +1,6 @@
 package org.cpts582.JPNElectronicsMarketplace;
 
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 

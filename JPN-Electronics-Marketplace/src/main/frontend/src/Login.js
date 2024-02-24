@@ -7,7 +7,6 @@ import app_logo from './app_logo.png';
 import CustomNavbar from "./Navbar";
 import {login} from "./api/user";
 
-
 function Login() {
     const [password, setPassword] = useState("")
     const [userEmail, setUserEmail] = useState("")
@@ -20,16 +19,30 @@ function Login() {
         setShowPwd(!showPwd);
     }
 
+    const [errorMessage, setErrorMessage] = useState("");
+    const [loginMessage, setLoginMessage] = useState("");
+
     const handleLogin = async (e) => {
         e.preventDefault();
         try {
             const response = await login({userEmail, password});
             if (response.message === "Login succeed!") {
-                console.log(response)
-                window.location.href = "/home";
+                const {userEmail, userId, userName} = response.data
+                sessionStorage.setItem("user", JSON.stringify({userEmail, userId, userName}));
+                // Show success message for login
+                setLoginMessage("Login successfully! Welcome");
+                setTimeout(() => {
+                    // setLoginMessage("");
+                    window.location.href = "/home"
+                }, 1200);
             }
+            // Show error message
             else {
-                console.log("Unable to login...")
+                console.log("Unable to login...");
+                setErrorMessage("Unable to login...check email/password");
+                setTimeout(() => {
+                    setErrorMessage("");
+                }, 1200);
             }
         } catch (error) {
             console.error("Something went wrong... ", error);
@@ -45,6 +58,13 @@ function Login() {
             {/*App logo*/}
 
             <img src={app_logo} alt="App_logo" className='app_logo'/>
+
+            <div>
+                {errorMessage && <div className="error-message alert alert-danger">{errorMessage}</div>}
+            </div>
+            <div>
+                {loginMessage && <div className="success-message alert alert-success">{loginMessage}</div>}
+            </div>
 
             <Form className="login_form">
 

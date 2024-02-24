@@ -5,9 +5,9 @@ import { Container, Row, Col, Card, Button } from 'react-bootstrap';
 
 
 function Home() {
-    // handling code goes here
 
-    // return the actual element to be rendered on the page
+    const userData = JSON.parse(sessionStorage.getItem("user"))
+
     return(
         <>
         <CustomNavbar />

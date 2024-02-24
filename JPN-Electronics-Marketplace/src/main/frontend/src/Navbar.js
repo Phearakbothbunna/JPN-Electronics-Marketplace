@@ -5,6 +5,7 @@ import app_logo from './app_logo.png';
 import {useState} from "react";
 
 
+
 function CustomNavbar() {
 
     const [show, setShow] = useState(false);
@@ -15,12 +16,20 @@ function CustomNavbar() {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
+
     const handleUpload = (e) => {
         e.preventDefault();
         // We can send the input data to our database to store them
         console.log(productName, productDescription);
         handleClose();
     };
+
+    function handleLogout() {
+        sessionStorage.removeItem('user');
+        window.location.href = '/login';
+    }
+
+    const userData = JSON.parse(sessionStorage.getItem("user"))
 
     const handleImageUpload = (e) => {
         const image = e.target.files[0];
@@ -31,30 +40,34 @@ function CustomNavbar() {
     return(
         <>
           <Navbar fixed="top" className="justify-content-left" bg="dark" data-bs-theme="dark">
-            <Container>
 
+            <Container>
                 <Navbar.Brand>
                     <img
-                      src={app_logo}
-                      width="50"
-                      height="50"
-                      className="d-inline-block align-top"
-                      alt="React Bootstrap logo"/>
+                        src={app_logo}
+                        width="50"
+                        height="50"
+                        className="d-inline-block align-top"
+                        alt="React Bootstrap logo"/>
                 </Navbar.Brand>
 
                 <Navbar.Brand>
-                  JPN-Electronics
+                    JPN-Electronics
                 </Navbar.Brand>
 
-                <Nav className="me-auto">
-                    <Nav.Link href="home">Home</Nav.Link>
-                </Nav>
+
                 <Navbar.Collapse className="justify-content-end">
                     <Navbar.Text id="login-text">
-                        Welcome: <a href="login">blah blah</a>
+                        {userData ? (
+                            <>
+                                Welcome: <a href="login">{userData.userName}!</a>
+                                <Button className="btn-upload" style={{marginLeft: '30px'}} onClick={handleShow}>Upload Product</Button>
+                                <Button className="btn_logout" style={{marginLeft: '30px'}} variant="outline-secondary" onClick={handleLogout}>Logout</Button>
+                            </>
+                        ) : (
+                            <p>Login to start browsing!</p>
+                        )}
                     </Navbar.Text>
-
-                    <Button className="btn-upload" style={{marginLeft: '30px'}} onClick={handleShow}>Upload Product</Button>
 
                     {/* Display the Modal if show state is True or call the handleClose function when the modal is
                     about to be hidden*/}

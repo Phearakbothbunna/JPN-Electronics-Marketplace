@@ -1,0 +1,6 @@
+1. Execute .sql file
+2. Change related configs in resources/*.properties to align with yours
+3. Launch application, default port is 8081
+
+If sth. went wrong:
+1. Use postman etc., if sth. went wrong, mostly because parameter type in controller method (Might be @RequestParam)

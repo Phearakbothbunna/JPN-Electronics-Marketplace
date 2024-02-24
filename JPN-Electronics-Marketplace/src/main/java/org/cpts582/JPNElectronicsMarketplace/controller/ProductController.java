@@ -62,7 +62,7 @@ public class ProductController {
     })
     @ApiOperation("Add a new product from the current user")
     @ResponseBody
-    @GetMapping("/addProduct")
+    @PostMapping("/addProduct")
     public JsonResponse postNewProduct(@ApiParam("Product object")
                                        @RequestBody Product product) {
         return JsonResponse.success(productService.addProduct(product));

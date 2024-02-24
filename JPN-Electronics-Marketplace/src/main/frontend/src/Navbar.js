@@ -3,7 +3,8 @@ import './Navbar.css';
 import {Container, Form, Nav, Navbar, NavDropdown, Button, Modal, ModalHeader, ModalTitle} from 'react-bootstrap';
 import app_logo from './app_logo.png';
 import {useState} from "react";
-
+import {Link} from "react-router-dom";
+import {postNewProduct} from "./api/product";
 
 
 function CustomNavbar() {
@@ -17,11 +18,20 @@ function CustomNavbar() {
     const handleShow = () => setShow(true);
 
 
-    const handleUpload = (e) => {
+    const handleUpload = async (e) => {
         e.preventDefault();
+
+        try {
+            await postNewProduct({productName, productPrice,productDescription});
+            console.log({ productName, productPrice, productDescription })
+            console.log("Product uploaded successfully!");
+            handleClose();
+        } catch (error) {
+            console.error("Error uploading product", error);
+        }
         // We can send the input data to our database to store them
-        console.log(productName, productDescription);
-        handleClose();
+        // console.log(productName, productDescription);
+        // handleClose();
     };
 
     function handleLogout() {
@@ -60,7 +70,7 @@ function CustomNavbar() {
                     <Navbar.Text id="login-text">
                         {userData ? (
                             <>
-                                Welcome: <a href="login">{userData.userName}!</a>
+                                <Link to="/myListing"> {userData.userName}!</Link>
                                 <Button className="btn-upload" style={{marginLeft: '30px'}} onClick={handleShow}>Upload Product</Button>
                                 <Button className="btn_logout" style={{marginLeft: '30px'}} variant="outline-secondary" onClick={handleLogout}>Logout</Button>
                             </>
@@ -77,27 +87,41 @@ function CustomNavbar() {
                         </ModalHeader>
 
                         <Modal.Body>
-                            <Form onSubmit={handleUpload}>
+                            <Form>
                                 <Form.Group className="mb-3">
                                     <Form.Label> <strong> Product Name </strong></Form.Label>
-                                    <Form.Control type="text" placeholder="Enter product name" value={productName} onChange={e => setProductName(e.target.value)} required/>
+                                    <Form.Control
+                                        type="text"
+                                        name="productName"
+                                        placeholder="Enter product name"
+                                        value={productName}
+                                        onChange={(e )=> setProductName(e.target.value)} required/>
                                 </Form.Group>
 
                                 <Form.Group className={"mb-3"}>
                                     <Form.Label> <strong> Price </strong></Form.Label>
-                                    <Form.Control type="text" placeholder="Enter product price in $" value={productPrice} onChange={e => setProductPrice(e.target.value)} required />
+                                    <Form.Control
+                                        type="text"
+                                        name="productPrice"
+                                        placeholder="Enter product price in $"
+                                        value={productPrice} onChange={(e )=> setProductPrice(e.target.value)} required />
                                 </Form.Group>
 
                                 <Form.Group className="mb-3">
                                     <Form.Label> <strong> Product Description </strong> </Form.Label>
-                                    <Form.Control as="textarea" rows={4} placeholder="Enter product description" value={productDescription} onChange={e => setProductDescription(e.target.value)} required />
+                                    <Form.Control
+                                        as="textarea"
+                                        name="productDescription"
+                                        rows={4} placeholder="Enter product description"
+                                        value={productDescription}
+                                        onChange={(e )=> setProductDescription(e.target.value)} required />
                                 </Form.Group>
 
                                  <Form.Group className="mb-3">
                                     <Form.Label> <strong> Image </strong> </Form.Label>
-                                    <Form.Control type={"file"}/>
+                                    <Form.Control type={"file"} onChange={handleImageUpload}/>
                                  </Form.Group>
-                                <Button variant="primary" type="submit">
+                                <Button variant="primary" type="submit" onClick={handleUpload}>
                                     Submit
                                 </Button>
                             </Form>

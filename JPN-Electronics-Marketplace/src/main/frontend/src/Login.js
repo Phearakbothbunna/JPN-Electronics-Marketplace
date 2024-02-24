@@ -32,9 +32,8 @@ function Login() {
                 // Show success message for login
                 setLoginMessage("Login successfully! Welcome");
                 setTimeout(() => {
-                    // setLoginMessage("");
                     window.location.href = "/home"
-                }, 1200);
+                }, 800);
             }
             // Show error message
             else {

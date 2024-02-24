@@ -54,11 +54,11 @@ public class ProductServiceImpl extends ServiceImpl<ProductMapper, Product> impl
 
     @Override
     public boolean addProduct(Product product) {
-        product = new Product();
-        product.setProductDescription(product.getProductDescription());
-        product.setProductName(product.getProductName());
-        product.setProductPrice(product.getProductPrice());
-        product.setProductImgUrl(product.getProductImgUrl());
+//        product = new Product();
+//        product.setProductDescription(product.getProductDescription());
+//        product.setProductName(product.getProductName());
+//        product.setProductPrice(product.getProductPrice());
+//        product.setProductImgUrl(product.getProductImgUrl());
         product.setProductUploadTime(LocalDateTime.now());
         product.setProductSellerId(SessionUtils.getCurrentUser().getUserId());
         return save(product);

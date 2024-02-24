@@ -7,6 +7,7 @@ import Register from "./Register";
 import LogoPage from "./LogoPage";
 import Home from "./Home"
 import ProtectedRoute from "./ProtectedRoute";
+import MyListing from "./MyListing";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
                       <Home />
                   </ProtectedRoute>
               } />
+              <Route path = "/myListing" element = {<MyListing/>} />
           </Routes>
         </header>
 

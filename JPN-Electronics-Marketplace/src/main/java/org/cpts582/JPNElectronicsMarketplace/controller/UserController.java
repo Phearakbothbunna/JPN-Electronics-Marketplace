@@ -37,6 +37,20 @@ public class UserController {
         return JsonResponse.failure("User email or password incorrect");
     }
 
+    @ApiResponses({
+            @ApiResponse(code = 200, message = "Success"),
+            @ApiResponse(code = 500, message = "Failure")
+    })
+    @ApiOperation("Register a new user")
+    @ResponseBody
+    @PostMapping("/register")
+    public JsonResponse register(@RequestBody User user){
+        if (!userService.registerUser(user)) {
+            return JsonResponse.success("Already registered");
+        }
+        return JsonResponse.success("Register succeed!");
+    }
+
 
 
 }

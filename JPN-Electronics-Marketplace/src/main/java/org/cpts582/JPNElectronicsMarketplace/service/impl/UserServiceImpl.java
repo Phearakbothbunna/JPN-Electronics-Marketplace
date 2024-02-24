@@ -53,6 +53,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
         newUser.setUserEmail(user.getUserEmail());
         newUser.setUserName(user.getUserName());
         newUser.setPassword(user.getPassword());
+        newUser.setUserContactInfo(user.getUserContactInfo());
         save(newUser);
         return true;
     }

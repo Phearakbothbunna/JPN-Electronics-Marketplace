@@ -6,6 +6,7 @@ import Login from './Login';
 import Register from "./Register";
 import LogoPage from "./LogoPage";
 import Home from "./Home"
+import ProtectedRoute from "./ProtectedRoute";
 
 function App() {
   return (
@@ -16,7 +17,11 @@ function App() {
               <Route path="/" element={<LogoPage />} />
               <Route path = "/login" element = {<Login/>} />
               <Route path="/register" element={<Register />} />
-              <Route path="/home" element={<Home />} />
+              <Route path="/home" element={
+                  <ProtectedRoute>
+                      <Home />
+                  </ProtectedRoute>
+              } />
           </Routes>
         </header>
 

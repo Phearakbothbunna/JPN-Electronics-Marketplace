@@ -39,7 +39,7 @@ function Register() {
 
         if (emailValid && pwdValid && pwd === confirmPwd) {
             window.location.href = "/login";
-        }  ;
+        };
 
     }
 

@@ -34,8 +34,7 @@ public class ProductController {
             @ApiResponse(code = 500, message = "Failure")
     })
     @ApiOperation("Get all the products uploaded, sold by current user")
-    @ResponseBody
-    @GetMapping("/myProducts")
+    @PostMapping("/myProducts")
     public JsonResponse getProductsISell(@ApiParam("Page specs")
                                          @RequestBody PageParam pageParam) {
         return JsonResponse.success(productService.getMyProducts(pageParam));

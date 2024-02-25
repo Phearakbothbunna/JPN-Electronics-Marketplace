@@ -58,7 +58,7 @@ function Home() {
                                 <Button variant="light" style={{ marginTop: 'auto' }} onClick={() => handleShowContactInfo(index)}>
                                     {showContactInfo[index] ? 'Hide Contact Info' : 'View Contact Info'} </Button>
                                 {showContactInfo[index] && (
-                                    <div>
+                                    <div style={{fontSize: '20px'}}>
                                         {record.contactInfo}
                                     </div>
                                 )}

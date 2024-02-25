@@ -23,8 +23,7 @@ public class ProductController {
             @ApiResponse(code = 500, message = "Failure")
     })
     @ApiOperation("Get all the products in marketplace, excluding current user's")
-    @ResponseBody
-    @GetMapping("/shop")
+    @PostMapping("/shop")
     public JsonResponse getOthersProducts(@ApiParam("Page specs")
                                           @RequestBody PageParam pageParam) {
         return JsonResponse.success(productService.getProductSoldByOthers(pageParam));

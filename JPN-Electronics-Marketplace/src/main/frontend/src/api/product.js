@@ -1,6 +1,6 @@
 import {get, post} from './http'
 
-export const getProductsExceptUsers=(pageParam)=>get('/api/product/shop')
+export const getProductsExceptUsers=(pageParam)=>post('/api/product/shop', pageParam)
 export const getMyProducts=(pageParam)=>get('/api/product/myProducts')
 export const searchProducts=(pageParam, key)=>get('/api/product/searchProducts')
 export const postNewProduct=(product)=>post('/api/product/addProduct', product)

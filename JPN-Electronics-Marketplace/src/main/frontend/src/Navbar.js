@@ -5,7 +5,8 @@ import app_logo from './app_logo.png';
 import {useState} from "react";
 import {Link} from "react-router-dom";
 import {postNewProduct} from "./api/product";
-
+import React from "react";
+import { MDBCol } from "mdbreact";
 
 function CustomNavbar() {
 
@@ -18,7 +19,6 @@ function CustomNavbar() {
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
-    const requiredFields = ['productName', 'productPrice', 'productDescription', 'contactInfo'];
 
     const handleUpload = async (e) => {
         // We prevent user from submitting empty forms
@@ -71,6 +71,9 @@ function CustomNavbar() {
                 <Navbar.Brand as={Link} to="/home">
                     JPN-Electronics
                 </Navbar.Brand>
+                <MDBCol md="3">
+                    <input className="form-control" type="text" placeholder="Search" aria-label="Search" />
+                </MDBCol>
 
                 <Navbar.Collapse className="justify-content-end">
                     <Navbar.Text id="login-text">
@@ -79,6 +82,7 @@ function CustomNavbar() {
                                 Welcome <Link to="/myListing"> {userData.userName}</Link>
                                 <Button className="btn-upload" style={{marginLeft: '30px'}} onClick={handleShow}>Upload Product</Button>
                                 <Button className="btn_logout" style={{marginLeft: '30px'}} variant="outline-secondary" onClick={handleLogout}>Logout</Button>
+
                             </>
                         ) : (
                             <p>Login to start browsing!</p>

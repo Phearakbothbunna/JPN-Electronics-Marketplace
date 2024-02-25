@@ -27,8 +27,8 @@ function Login() {
         try {
             const response = await login({userEmail, password});
             if (response.message === "Login succeed!") {
-                const {userEmail, userId, userName} = response.data
-                sessionStorage.setItem("user", JSON.stringify({userEmail, userId, userName}));
+                const {userEmail, userId, userName, userContactInfo} = response.data
+                sessionStorage.setItem("user", JSON.stringify({userEmail, userId, userName, userContactInfo}));
                 // Show success message for login
                 setLoginMessage("Login successfully! Welcome");
                 setTimeout(() => {

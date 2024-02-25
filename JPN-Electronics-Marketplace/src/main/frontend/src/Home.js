@@ -10,7 +10,7 @@ function Home() {
 
     const userData = JSON.parse(sessionStorage.getItem("user"))
     const [products, setProducts] = useState([]);
-    const [isLoading, setIsLoading] = useState(false);
+    const [showContactInfo, setShowContactInfo] = useState(false);
     const [error, setError] = useState(null);
 
     useEffect(() => {
@@ -18,7 +18,7 @@ function Home() {
             try {
                 const response = await getProductsExceptUsers({ pageNo: 1, pageSize: 10 });
                 setProducts(response);
-                console.log()
+                console.log(products.data.record.contactInfo)
 
             } catch (error) {
                 setError(error);
@@ -28,22 +28,40 @@ function Home() {
 
         fetchProducts();
     }, []);
+
+    // This is to show or hide the contact info according to each card's index
+    const handleShowContactInfo = (index) => {
+        setShowContactInfo(prevState => ({
+            ...prevState, [index]: !prevState[index]
+        }));
+    };
+
     return(
         <>
             <CustomNavbar />
             <Container fluid id='listing-container'>
                 <Row>
                     {products.data && products.data.records && products.data.records.map((record, index) => (
-                        <Card key={index} style={{ width: '18rem', marginBottom: '30px', marginRight: '50px'  }} data-bs-theme="dark">
+                        <Card
+                            key={index}
+                            style={{ width: '16rem', marginBottom: '30px', marginRight: '50px'  }} data-bs-theme="dark">
                             <Card.Img
                                 src={record.productImgUrl || 'https://via.placeholder.com/150'}
+                                style={{ width: 'auto', height: 'auto' }}
                                 alt='Image Not Found'
                             />
-                            <Card.Body>
+
+                            <Card.Body style={{ display: 'flex', flexDirection: 'column' }}>
                                 <Card.Title id='card-title'>{record.productName}</Card.Title>
                                 <Card.Text id='card-text'>{record.productDescription}</Card.Text>
                                 <Card.Text id='card-text'>${record.productPrice}</Card.Text>
-                                <Button variant="light">View Contact Info</Button>
+                                <Button variant="light" style={{ marginTop: 'auto' }} onClick={() => handleShowContactInfo(index)}>
+                                    {showContactInfo[index] ? 'Hide Contact Info' : 'View Contact Info'} </Button>
+                                {showContactInfo[index] && (
+                                    <div>
+                                        {record.contactInfo}
+                                    </div>
+                                )}
                             </Card.Body>
                         </Card>
                     ))}

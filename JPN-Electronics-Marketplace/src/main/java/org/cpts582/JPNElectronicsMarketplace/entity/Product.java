@@ -34,6 +34,9 @@ public class Product implements Serializable {
     @ApiModelProperty("Product image (URL)")
     private String productImgUrl;
 
+    @ApiModelProperty("Contact info for product")
+    private String contactInfo;
+
     @ApiModelProperty("Product upload time")
     private LocalDateTime productUploadTime;
 

@@ -2,15 +2,12 @@ package org.cpts582.JPNElectronicsMarketplace;
 import org.cpts582.JPNElectronicsMarketplace.entity.User;
 import org.cpts582.JPNElectronicsMarketplace.entity.params.UserVO;
 import org.cpts582.JPNElectronicsMarketplace.mapper.UserMapper;
-import org.cpts582.JPNElectronicsMarketplace.service.IUserService;
 import org.cpts582.JPNElectronicsMarketplace.service.impl.UserServiceImpl;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.springframework.boot.test.context.SpringBootTest;
-
-import javax.validation.constraints.AssertFalse;
 
 import static org.junit.jupiter.api.Assertions.*;
 

@@ -93,6 +93,22 @@ public class productTest {
         verify(productMapper, times(1)).selectPage(any(Page.class), any(QueryWrapper.class));
     }
 
+    // Test case for when key is empty/null
+    // This will help us achieve 100% coverage test for searchProducts
+    @Test
+    public void testSearchProducts_noKey() {
+        PageParam pageParam = new PageParam(1L, 10L);
+        String key = null;
+        Page<Product> expectedProducts = new Page<>(1, 10);
+
+        when(productMapper.selectPage(any(Page.class), any(QueryWrapper.class))).thenReturn(expectedProducts);
+
+        Page<Product> actualProducts = productService.searchProducts(pageParam, key);
+
+        assertEquals(expectedProducts, actualProducts);
+        verify(productMapper, times(1)).selectPage(any(Page.class), any(QueryWrapper.class));
+    }
+
     @Test
     public void testAddProduct() {
         Product product = new Product();

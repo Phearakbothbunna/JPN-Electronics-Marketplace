@@ -199,6 +199,29 @@ public class productTest {
         verify(productMapper).updateById(product);
     }
 
+    @Test
+    public void testSellProduct() {
+        // Setting up by creating a new product
+        Long productId = 1L;
+        Product product = new Product();
+        product.setProductId(productId);
+        product.setProductIsSold(0);
+
+        // Perform mocking behavior
+        // This will ensure that it returns the product object we created above when getById is called
+        when(productService.getById(productId)).thenReturn(product);
+        // This will ensure that the update operation is successful (changed from 0 to 1)
+        when(productMapper.updateById(product)).thenReturn(1);
+
+        // Store the boolean result of sellProduct
+        boolean result = productService.sellProduct(productId);
+        // Assert true if the sellProduct method got executed successfully
+        assertTrue(result);
+        // Check to see if the value has been updated to 1 indicating that it's been sold
+        assertEquals(1, product.getProductIsSold().intValue());
+        verify(productMapper).updateById(product);
+    }
+
 
 
 

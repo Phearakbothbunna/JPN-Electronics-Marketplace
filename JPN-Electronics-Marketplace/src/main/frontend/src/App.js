@@ -23,7 +23,11 @@ function App() {
                       <Home />
                   </ProtectedRoute>
               } />
-              <Route path = "/myListing" element = {<MyListing/>} />
+              <Route path = "/myListing" element = {
+                  <ProtectedRoute>
+                    <MyListing/>
+                  </ProtectedRoute>
+              } />
           </Routes>
         </header>
 

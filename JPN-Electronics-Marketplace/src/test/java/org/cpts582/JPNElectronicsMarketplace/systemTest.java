@@ -1,39 +1,31 @@
 package org.cpts582.JPNElectronicsMarketplace;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class systemTest {
     WebDriver driver;
-
-    public static ChromeDriver getChromeDriver() {
-        ChromeOptions chromeOptions = new ChromeOptions();
-        chromeOptions.addArguments("--remote-allow-origins=*");
-        return new ChromeDriver(chromeOptions);
-    }
-
     @BeforeEach
     void setUp() {
-        System.setProperty("webdriver.chrome.driver", "C:\\Users\\phear\\Downloads\\chromedriver.exe");
-        driver = getChromeDriver();
+        WebDriverManager.firefoxdriver().setup();
+        driver = new FirefoxDriver();
     }
 
-    void test_load_page() {
+    void openPage() {
         driver.get("https://google.com");
     }
 
-
     @Test
-    void test() {
-        test_load_page();
+    void test_open_page() {
+        openPage();
     }
 
     @AfterEach
     void tearDown() {
-        //driver.quit();
+        driver.quit();
     }
 }

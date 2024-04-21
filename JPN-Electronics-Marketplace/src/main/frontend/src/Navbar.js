@@ -79,7 +79,7 @@ function CustomNavbar() {
                     <Navbar.Text id="login-text">
                         {userData ? (
                             <>
-                                Welcome <Link to="/myListing"> {userData.userName}</Link>
+                                Welcome <Link to="/myListing" className={'user_login'}> {userData.userName}</Link>
                                 <Button className="btn-upload" style={{marginLeft: '30px'}} onClick={handleShow}>Upload Product</Button>
                                 <Button className="btn_logout" style={{marginLeft: '30px'}} variant="outline-secondary" onClick={handleLogout}>Logout</Button>
 

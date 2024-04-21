@@ -105,7 +105,7 @@ function Register() {
                         />
                 </Form.Group>
 
-                <Form.Group className="mb-3" controlId="formBasicPassword">
+                <Form.Group className="mb-3" controlId="formBasicConfirmPassword">
                     <Form.Label style={{color: "antiquewhite"}}>Confirm Password</Form.Label>
                     <Form.Control
                         type={showPwd ? "text" : "password"}

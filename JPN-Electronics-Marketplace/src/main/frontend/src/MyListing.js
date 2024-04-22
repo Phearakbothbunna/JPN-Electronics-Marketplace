@@ -46,7 +46,7 @@ function MyListing() {
 
             <Container fluid id='listing-container'>
                 <Row>
-                    <h2>MY LISTINGS</h2>
+                    <h2 className={"user_listing"}>MY LISTINGS</h2>
                     {myProducts.data && myProducts.data.records && myProducts.data.records.map((record, index) => (
                         <Card
                             key={index}

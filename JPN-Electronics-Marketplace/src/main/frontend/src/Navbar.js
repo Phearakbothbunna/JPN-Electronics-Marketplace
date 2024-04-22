@@ -34,6 +34,7 @@ function CustomNavbar() {
                 console.log("Product uploaded successfully!");
                 handleClose();
             } catch (error) {
+                alert('There was an error uploading the product...');
                 console.error("Error uploading product", error);
             }
         }
@@ -80,7 +81,7 @@ function CustomNavbar() {
                         {userData ? (
                             <>
                                 Welcome <Link to="/myListing" className={'user_login'}> {userData.userName}</Link>
-                                <Button className="btn-upload" style={{marginLeft: '30px'}} onClick={handleShow}>Upload Product</Button>
+                                <Button className="btn_upload" style={{marginLeft: '30px'}} onClick={handleShow}>Upload Product</Button>
                                 <Button className="btn_logout" style={{marginLeft: '30px'}} variant="outline-secondary" onClick={handleLogout}>Logout</Button>
 
                             </>
@@ -148,7 +149,7 @@ function CustomNavbar() {
                                         onChange={(e )=> setContactInfo(e.target.value)} required />
 
                                 </Form.Group>
-                                <Button variant="primary" type="submit" onClick={handleUpload}>
+                                <Button id={"btn_submit"} variant="primary" type="submit" onClick={handleUpload}>
                                     Submit
                                 </Button>
                             </Form>

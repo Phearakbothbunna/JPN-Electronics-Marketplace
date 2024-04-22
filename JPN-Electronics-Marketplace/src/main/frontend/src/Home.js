@@ -55,10 +55,10 @@ function Home() {
                                 <Card.Title id='card-title'>{record.productName}</Card.Title>
                                 <Card.Text id='card-text'>{record.productDescription}</Card.Text>
                                 <Card.Text id='card-text'>${record.productPrice}</Card.Text>
-                                <Button variant="light" style={{ marginTop: 'auto' }} onClick={() => handleShowContactInfo(index)}>
+                                <Button className={"view_contact"} variant="light" style={{ marginTop: 'auto' }} onClick={() => handleShowContactInfo(index)}>
                                     {showContactInfo[index] ? 'Hide Contact Info' : 'View Contact Info'} </Button>
                                 {showContactInfo[index] && (
-                                    <div style={{fontSize: '20px'}}>
+                                    <div className={"contact_display"} style={{fontSize: '20px'}}>
                                         {record.contactInfo}
                                     </div>
                                 )}

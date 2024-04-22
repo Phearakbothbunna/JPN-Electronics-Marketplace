@@ -98,7 +98,7 @@ function Login() {
                 Login
             </Button>
 
-            <div className="d-flex justify-content-center mt-3">
+            <div className="d-flex justify-content-center mt-3" id={"btn_register"}>
                 <Link to="/register" className="btn btn-secondary btn_register">Register</Link>
             </div>
 
